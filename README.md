@@ -40,6 +40,13 @@ yarn dev
 - [`jest`](https://github.com/facebook/jest) and [`supertest`](https://github.com/ladjs/supertest) for E2E testing
 - [`esbuild`](https://github.com/evanw/esbuild) as ts to js bundler.
 
+## Authorization
+- Authorization is implemented based on `Oauth` protocol. 
+- On `/login` client receives `access_token` and `refresh_token`. 
+- After `access_token` is expired, client must receive new `access_token` and `refresh_token`. 
+`refresh_token` is stored in redis. 
+- Client can `/revoke` `refresh_token`, after which, `refresh_token` is deleted from redis and client cannot receive new tokens using same `refresh_token`. 
+
 ## Project Info
 
 Project starting point is `src/app.ts`.
