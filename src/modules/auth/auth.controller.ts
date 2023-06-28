@@ -5,7 +5,7 @@ import type {
 } from '@App/modules/auth/auth.schema';
 import { RouterContext } from 'koa-router';
 import { Next } from 'koa';
-import { AppContext } from '@App/utils/AppContext';
+import { AppContext } from '@App/utils/app.context';
 import { UserModelType } from '@App/db/models/user.model';
 import { pick } from 'lodash';
 import { StatusCodes } from 'http-status-codes';

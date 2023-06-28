@@ -1,4 +1,4 @@
-import 'reflect-metadata';
+import 'reflect-metadata'; // Reimported for jest
 import Koa from 'koa';
 import koaBody from 'koa-body';
 import cors from '@koa/cors';

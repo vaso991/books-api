@@ -1,4 +1,4 @@
-import { AppContext } from '@App/utils/AppContext';
+import { AppContext } from '@App/utils/app.context';
 import { BookContentService } from './bookcontent.service';
 import { AddBookContentType } from '@App/modules/bookcontent/bookcontent.schema';
 import { castArray } from 'lodash';

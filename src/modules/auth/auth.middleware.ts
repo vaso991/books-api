@@ -1,4 +1,4 @@
-import { AppContext, AppState } from '@App/utils/AppContext';
+import { AppContext, AppState } from '@App/utils/app.context';
 import { Next } from 'koa';
 import jwt, { JwtPayload } from 'jsonwebtoken';
 import { AppEnv } from '@App/app.env';

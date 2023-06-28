@@ -1,6 +1,6 @@
 import Router from 'koa-router';
 import { HealthRouter } from './modules/health/health.router';
-import { RouterSwagger } from './utils/RouterSwagger';
+import { RouterSwagger } from './utils/router.swagger';
 import { AuthRouter } from '@App/modules/auth/auth.router';
 import { BooksRouter } from '@App/modules/books/books.router';
 import { BookContentRouter } from '@App/modules/bookcontent/bookcontent.router';

@@ -14,7 +14,7 @@ export class Db {
     const _knex = knex({
       client: 'pg',
       connection: AppEnv.DATABASE_URL,
-      debug: AppEnv.NODE_ENV === 'development',
+      debug: AppEnv.DATABASE_DEBUG,
     });
     await _knex.migrate.latest({
       directory: path.join(__dirname, 'migrations'),

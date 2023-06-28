@@ -1,5 +1,4 @@
 import { Next, ParameterizedContext } from 'koa';
-import { AxiosError } from 'axios';
 import { HttpError } from 'koa';
 import { ZodError } from 'zod';
 import { DBError, NotFoundError } from 'objection';
@@ -44,16 +43,6 @@ const errorFormatter = (error: Error): IFormattedError => {
     // Standart javascript error
     errorResponse.status = error.status;
     errorResponse.message = error.message;
-  } else if (error instanceof AxiosError) {
-    // Axios error
-    errorResponse.status = error.status || StatusCodes.INTERNAL_SERVER_ERROR;
-    if (error.response) {
-      errorResponse.status = error.response.status;
-      const responseData = error.response.data as Record<string, string>;
-      if (responseData && responseData.message) {
-        errorResponse.message = responseData.message;
-      }
-    }
   } else if (error instanceof ZodError) {
     // Zod validation error
     errorResponse.status = StatusCodes.BAD_REQUEST;

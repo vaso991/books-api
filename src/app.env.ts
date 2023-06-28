@@ -12,6 +12,7 @@ const AppEnvSchema = z.object({
   PORT: z.coerce.number().default(8080),
   COOKIE_KEY: z.string().default('secret'),
   DATABASE_URL: z.string(),
+  DATABASE_DEBUG: z.coerce.boolean().default(false),
   JWT_ISSUER: z.string(),
   ACCESS_TOKEN_SECRET: z.string(),
   REFRESH_TOKEN_SECRET: z.string(),

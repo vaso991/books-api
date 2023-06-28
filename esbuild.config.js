@@ -16,7 +16,7 @@ const config = {
   packages: 'external',
   plugins: [
     aliasPlugin({
-      '@': path.resolve(__dirname, './src')
+      '@App': path.resolve(__dirname, './src')
     }),
   ],
 }
