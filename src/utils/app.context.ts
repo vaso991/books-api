@@ -1,5 +1,9 @@
 import { RouterContext } from 'koa-router';
 
+/**
+ * Declaration for application state object.
+ * Use this as context type in controllers.
+ */
 export type AppState = {
   user: {
     email: string;

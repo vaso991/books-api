@@ -3,7 +3,7 @@ import { z, ZodError } from 'zod';
 
 dotenv.config();
 
-// Descript application enviroment variables and pass validation.
+// Describe application enviroment variables and pass validation.
 const AppEnvSchema = z.object({
   NODE_ENV: z
     .enum(['development', 'test', 'production'])
