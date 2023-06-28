@@ -1,7 +1,8 @@
-import { AppContext } from '@/utils/AppContext';
+import { AppContext } from '@App/utils/AppContext';
 import { BookContentService } from './bookcontent.service';
-import { AddBookContentType } from '@/modules/bookcontent/bookcontent.schema';
+import { AddBookContentType } from '@App/modules/bookcontent/bookcontent.schema';
 import { castArray } from 'lodash';
+import { StatusCodes } from 'http-status-codes';
 
 export class BookContentController {
   /**
@@ -11,11 +12,13 @@ export class BookContentController {
   public static async addPagesToBook(ctx: AppContext) {
     const requestBody = ctx.request.body as AddBookContentType;
     const { bookId } = ctx.params;
-    ctx.body = await BookContentService.addPagesToBook(
+    const result = await BookContentService.addPagesToBook(
       bookId,
       ctx.state.user.id,
       requestBody.pages,
     );
+    ctx.status = StatusCodes.CREATED;
+    ctx.body = result;
   }
 
   /**
@@ -48,7 +51,9 @@ export class BookContentController {
    */
   public static async deletePages(ctx: AppContext) {
     const { bookId } = ctx.params;
-    const pageNumbers: string[] = castArray(ctx.query.pageNumbers);
+    const pageNumbers: string[] = ctx.query.pageNumbers
+      ? castArray(ctx.query.pageNumbers)
+      : [];
     await BookContentService.deletePages(
       bookId,
       ctx.state.user.id,

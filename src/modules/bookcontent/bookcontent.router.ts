@@ -2,8 +2,8 @@ import Router from 'koa-router';
 import { BookContentController } from './bookcontent.controller';
 import { ZodValidator } from 'koa-router-zod-swagger';
 import { z } from 'zod';
-import { AuthMiddleware } from '@/modules/auth/auth.middleware';
-import { AddBookContentSchema } from '@/modules/bookcontent/bookcontent.schema';
+import { AuthMiddleware } from '@App/modules/auth/auth.middleware';
+import { AddBookContentSchema } from '@App/modules/bookcontent/bookcontent.schema';
 
 const router = new Router({
   prefix: '/bookcontent/:bookId',
@@ -61,7 +61,7 @@ router.delete(
       bookId: z.string().uuid(),
     }),
     query: z.object({
-      pageNumbers: z.array(z.coerce.number()).or(z.string()),
+      pageNumbers: z.array(z.coerce.number()).or(z.string()).optional(),
     }),
   }),
   BookContentController.deletePages,

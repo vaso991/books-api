@@ -1,9 +1,9 @@
 import Router from 'koa-router';
 import { HealthRouter } from './modules/health/health.router';
 import { RouterSwagger } from './utils/RouterSwagger';
-import { AuthRouter } from '@/modules/auth/auth.router';
-import { BooksRouter } from '@/modules/books/books.router';
-import { BookContentRouter } from '@/modules/bookcontent/bookcontent.router';
+import { AuthRouter } from '@App/modules/auth/auth.router';
+import { BooksRouter } from '@App/modules/books/books.router';
+import { BookContentRouter } from '@App/modules/bookcontent/bookcontent.router';
 import KoaRatelimit from 'koa-ratelimit';
 import { redisClient } from './utils/redis.client';
 

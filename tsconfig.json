@@ -26,13 +26,18 @@
       "./node_modules/@types"
     ],
     "paths": {
-      "@/*": [
+      "@App/*": [
         "./src/*"
       ]
     }
   },
   "include": [
-    "./src/**/*"
+    "./src/**/*",
+    "./test/**/*"
+  ],
+  "exclude": [
+    "./src/**/*.spec.ts",
+    "./src/**/*.test.ts"
   ],
   "linterOptions": {
     "exclude": []

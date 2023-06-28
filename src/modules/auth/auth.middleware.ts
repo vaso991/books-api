@@ -1,10 +1,9 @@
-import { AppContext, AppState } from '@/utils/AppContext';
+import { AppContext, AppState } from '@App/utils/AppContext';
 import { Next } from 'koa';
 import jwt, { JwtPayload } from 'jsonwebtoken';
-import { AppEnv } from '@/app.env';
-import { RefreshTokenType } from '@/modules/auth/auth.schema';
-import { redisClient } from '@/utils/redis.client';
-import { STATUS_CODES } from 'http';
+import { AppEnv } from '@App/app.env';
+import { RefreshTokenType } from '@App/modules/auth/auth.schema';
+import { redisClient } from '@App/utils/redis.client';
 import { StatusCodes } from 'http-status-codes';
 
 /**

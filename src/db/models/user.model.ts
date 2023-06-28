@@ -1,6 +1,5 @@
 import { Model, ModelObject, RelationMappings } from 'objection';
 import { timestampPlugin } from 'objection-timestamps';
-import { BookModel } from './book.model';
 
 class UserModel extends timestampPlugin()(Model) {
   static tableName = 'Users';
@@ -16,7 +15,7 @@ class UserModel extends timestampPlugin()(Model) {
   static relationMappings: RelationMappings = {
     books: {
       relation: Model.HasManyRelation,
-      modelClass: BookModel,
+      modelClass: `${__dirname}/book.model`,
       join: {
         from: 'Users.id',
         to: 'Books.authorId',
@@ -24,7 +23,7 @@ class UserModel extends timestampPlugin()(Model) {
     },
     currentPage: {
       relation: Model.HasOneThroughRelation,
-      modelClass: BookModel,
+      modelClass: `${__dirname}/book.model`,
       join: {
         from: 'Users.id',
         through: {

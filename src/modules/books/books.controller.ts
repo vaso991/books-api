@@ -1,6 +1,7 @@
 import { BooksService } from './books.service';
-import { AppContext } from '@/utils/AppContext';
-import { BookCreateType } from '@/modules/books/books.schema';
+import { AppContext } from '@App/utils/AppContext';
+import { BookCreateType } from '@App/modules/books/books.schema';
+import { StatusCodes } from 'http-status-codes';
 
 export class BooksController {
   /**
@@ -9,6 +10,7 @@ export class BooksController {
   public static async addNewBook(ctx: AppContext) {
     const book = ctx.request.body as BookCreateType;
     const userId = ctx.state.user.id;
+    ctx.status = StatusCodes.CREATED;
     ctx.body = await BooksService.addNewBook(book, userId);
   }
 

@@ -1,7 +1,6 @@
 import { Model, ModelObject, QueryBuilder, RelationMappings } from 'objection';
 import { timestampPlugin } from 'objection-timestamps';
-import { UserModel } from '@/db/models/user.model';
-import { BookPagesModel } from '@/db/models/bookpages.model';
+import { BookPagesModel } from '@App/db/models/bookpages.model';
 
 class BookModel extends timestampPlugin()(Model) {
   static tableName = 'Books';
@@ -17,7 +16,7 @@ class BookModel extends timestampPlugin()(Model) {
   static relationMappings: RelationMappings = {
     author: {
       relation: Model.BelongsToOneRelation,
-      modelClass: UserModel,
+      modelClass: `${__dirname}/user.model`,
       join: {
         from: 'Books.authorId',
         to: 'Users.id',

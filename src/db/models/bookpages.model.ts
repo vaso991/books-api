@@ -1,5 +1,5 @@
 import { Model, ModelObject, QueryBuilder, RelationMappings } from 'objection';
-import { BookModel } from '@/db/models/book.model';
+import { BookModel } from '@App/db/models/book.model';
 
 class BookPagesModel extends Model {
   static tableName = 'BookPages';

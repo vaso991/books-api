@@ -7,8 +7,9 @@ import { AppRoutes, ApiRoutes } from './routes';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { ErrorMiddleware } from './middlewares/error.middleware';
 import { Db } from './db';
-import { AppEnv } from '@/app.env';
+import { AppEnv } from '@App/app.env';
 import { StatusCodes } from 'http-status-codes';
+import { redisClient } from './utils/redis.client';
 
 export class App {
   private readonly koaApp: Koa;
@@ -58,16 +59,25 @@ export class App {
   public exit() {
     console.log('Closing...');
     this.closeDbConnection();
+    redisClient.quit();
+  }
+
+  private exitWithProcess() {
+    this.exit();
     process.exit(1);
   }
 
   public closeDbConnection() {
-    void Db.destroy();
+    return Db.destroy();
+  }
+
+  public seedDb() {
+    return Db.seed();
   }
 
   private initializeProcessExitLiteners() {
-    process.on('SIGINT', this.exit.bind(this));
-    process.on('SIGTERM', this.exit.bind(this));
+    process.on('SIGINT', this.exitWithProcess.bind(this));
+    process.on('SIGTERM', this.exitWithProcess.bind(this));
   }
 
   public start() {

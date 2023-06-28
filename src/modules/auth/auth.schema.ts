@@ -30,3 +30,12 @@ type RefreshTokenType = z.infer<typeof RefreshTokenSchema>;
 
 export { RefreshTokenSchema };
 export type { RefreshTokenType };
+
+type LoginResponseType = {
+  id: string;
+  email: string;
+  accessToken: string;
+  refreshToken: string;
+};
+
+export type { LoginResponseType };

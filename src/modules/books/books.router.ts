@@ -2,8 +2,8 @@ import Router from 'koa-router';
 import { BooksController } from './books.controller';
 import { ZodValidator } from 'koa-router-zod-swagger';
 import { z } from 'zod';
-import { AuthMiddleware } from '@/modules/auth/auth.middleware';
-import { BookCreateSchema } from '@/modules/books/books.schema';
+import { AuthMiddleware } from '@App/modules/auth/auth.middleware';
+import { BookCreateSchema } from '@App/modules/books/books.schema';
 
 const router = new Router({
   prefix: '/books',
@@ -51,7 +51,7 @@ router.put(
   ZodValidator({
     summary: 'Update book',
     params: z.object({
-      id: z.string(),
+      id: z.string().uuid(),
     }),
     body: BookCreateSchema,
   }),
@@ -64,7 +64,7 @@ router.delete(
   ZodValidator({
     summary: 'Delete book by id',
     params: z.object({
-      id: z.string(),
+      id: z.string().uuid(),
     }),
   }),
   BooksController.deleteBookById,

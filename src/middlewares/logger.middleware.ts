@@ -3,7 +3,7 @@ import { RouterContext } from 'koa-router';
 import PinoHttp, { Options as PinoOptions } from 'pino-http';
 import { IncomingMessage, ServerResponse } from 'http';
 import { format } from 'date-fns';
-import { AppEnv } from '@/app.env';
+import { AppEnv } from '@App/app.env';
 
 const PINO_OPTIONS: PinoOptions = {
   timestamp: () =>
@@ -22,7 +22,7 @@ const PINO_OPTIONS: PinoOptions = {
     res: ResSerializer,
   },
   transport:
-    AppEnv.NODE_ENV !== 'development'
+    AppEnv.NODE_ENV !== 'development' && AppEnv.NODE_ENV !== 'test'
       ? undefined
       : {
           target: 'pino-pretty',
@@ -37,7 +37,11 @@ const PINO_OPTIONS: PinoOptions = {
  * @param options pino options
  */
 export const LoggerMiddleware = (options?: PinoOptions) => {
-  const pino = PinoHttp({ ...PINO_OPTIONS, ...options });
+  const pino = PinoHttp({
+    ...PINO_OPTIONS,
+    ...options,
+    enabled: !process.env.NOLOG,
+  });
   const Logger = (ctx: Context, next: Next) => {
     // @ts-ignore
     ctx.req.ctx = ctx;

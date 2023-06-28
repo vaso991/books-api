@@ -2,10 +2,10 @@ import {
   AddBookContentType,
   BookContentPagesType,
   BookPageType,
-} from '@/modules/bookcontent/bookcontent.schema';
-import { BookPagesModel } from '@/db/models/bookpages.model';
+} from '@App/modules/bookcontent/bookcontent.schema';
+import { BookPagesModel } from '@App/db/models/bookpages.model';
 import { sortBy } from 'lodash';
-import { BookModel } from '@/db/models/book.model';
+import { BookModel } from '@App/db/models/book.model';
 import { Transaction } from 'objection';
 import { BooksService } from '../books/books.service';
 
@@ -121,18 +121,18 @@ export class BookContentService {
    * If no `pages` list presented, all pages will be deleted.
    * @param bookId Book id
    * @param userId User id
-   * @param pages `pageNumber` list
+   * @param pageNumbers `pageNumber` list
    * @returns
    */
   public static async deletePages(
     bookId: string,
     userId: string,
-    pages?: number[] | string[],
+    pageNumbers?: number[] | string[],
   ) {
     const book = await BooksService.getBookById(bookId, userId);
     const query = book.$relatedQuery<BookPagesModel>('pages').delete();
-    if (pages?.length) {
-      query.whereIn('pageNumber', pages);
+    if (pageNumbers && pageNumbers.length) {
+      query.whereIn('pageNumber', pageNumbers);
     }
     return query.execute();
   }

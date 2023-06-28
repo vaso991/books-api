@@ -1,9 +1,9 @@
-import { UserModel, UserModelType } from '@/db/models/user.model';
-import { AuthUtils } from '@/modules/auth/auth.utils';
-import type { AuthLoginType } from '@/modules/auth/auth.schema';
-import { AppEnv } from '@/app.env';
+import { UserModel, UserModelType } from '@App/db/models/user.model';
+import { AuthUtils } from '@App/modules/auth/auth.utils';
+import type { AuthLoginType } from '@App/modules/auth/auth.schema';
+import { AppEnv } from '@App/app.env';
 import jwt from 'jsonwebtoken';
-import { redisClient } from '@/utils/redis.client';
+import { redisClient } from '@App/utils/redis.client';
 
 export class AuthService {
   /**

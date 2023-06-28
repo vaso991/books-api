@@ -1,4 +1,4 @@
-import { AppEnv } from '@/app.env';
+import { AppEnv } from '@App/app.env';
 import IORedis from 'ioredis';
 
 // Initialize redis client

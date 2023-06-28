@@ -1,5 +1,5 @@
 import { RouterContext } from 'koa-router';
-import { Db } from '@/db';
+import { Db } from '@App/db';
 import { StatusCodes } from 'http-status-codes';
 
 export class HealthController {

@@ -10,9 +10,10 @@
     "dev": "nodemon --watch src -e ts,tsx --exec ts-node -r tsconfig-paths/register src/server.ts",
     "test": "lint-staged",
     "lint": "eslint .",
-    "jest": "jest",
+    "jest": "jest --forceExit --detectOpenHandles --silent",
     "postinstall": "husky install",
     "migration:make": "knex migrate:make -x ts",
+    "seed:make": "knex seed:make -x ts",
     "create:module": "node scripts/createModule.js"
   },
   "keywords": [],

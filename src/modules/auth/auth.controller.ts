@@ -2,11 +2,11 @@ import { AuthService } from './auth.service';
 import type {
   AuthRegisterType,
   RefreshTokenType,
-} from '@/modules/auth/auth.schema';
+} from '@App/modules/auth/auth.schema';
 import { RouterContext } from 'koa-router';
 import { Next } from 'koa';
-import { AppContext } from '@/utils/AppContext';
-import { UserModelType } from '@/db/models/user.model';
+import { AppContext } from '@App/utils/AppContext';
+import { UserModelType } from '@App/db/models/user.model';
 import { pick } from 'lodash';
 import { StatusCodes } from 'http-status-codes';
 

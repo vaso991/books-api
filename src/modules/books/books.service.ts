@@ -1,6 +1,6 @@
-import { BookCreateType } from '@/modules/books/books.schema';
-import { BookModel } from '@/db/models/book.model';
-import { BookContentService } from '@/modules/bookcontent/bookcontent.service';
+import { BookCreateType } from '@App/modules/books/books.schema';
+import { BookModel } from '@App/db/models/book.model';
+import { BookContentService } from '@App/modules/bookcontent/bookcontent.service';
 
 export class BooksService {
   /**

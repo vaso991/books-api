@@ -35,7 +35,7 @@ export { router as %ROUTER_NAME% };
   .replace('%PREFIX%', moduleNameLower)
   .replace('%ROUTER_NAME%', `${moduleName}Router`);
 
-const CONTROLLER_TEMPLATE = `import { AppContext } from '@/utils/AppContext';
+const CONTROLLER_TEMPLATE = `import { AppContext } from '@App/utils/AppContext';
 import { %SERVICE_NAME% } from './%SERVICE_FILENAME%';
 
 export class %CONTROLLER_NAME% {

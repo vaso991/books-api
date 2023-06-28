@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { BookContentPagesSchema } from '@/modules/bookcontent/bookcontent.schema';
+import { BookContentPagesSchema } from '@App/modules/bookcontent/bookcontent.schema';
 
 const BookCreateSchema = z.object({
   bookName: z.string(),

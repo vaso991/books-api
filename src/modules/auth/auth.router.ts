@@ -5,11 +5,11 @@ import {
   AuthLoginSchema,
   AuthRegisterSchema,
   RefreshTokenSchema,
-} from '@/modules/auth/auth.schema';
+} from '@App/modules/auth/auth.schema';
 import {
   AuthMiddleware,
   RefreshTokenMiddleware,
-} from '@/modules/auth/auth.middleware';
+} from '@App/modules/auth/auth.middleware';
 
 const router = new Router({
   prefix: '/auth',
